@@ -27,9 +27,9 @@ m.to_streamlit(height=700)
 
 if not bbox:
     st.text("Draw field")
-    tmp_button = st.button("Add value to database", key=f"missing_{bbox}")
+    tmp_button = st.button("Add value to database", key=f"missing_{st.session_state["data"]['bbox']}")
     if tmp_button:
-        bbox = m.user_roi_bounds()
+        st.session_state["data"]['bbox'] = m.user_roi_bounds()
     else:
         st.stop()
     
