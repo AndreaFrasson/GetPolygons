@@ -1,0 +1,2 @@
+environment activated
+streamlit run Home.py

@@ -22,7 +22,18 @@ with st.expander("See source code"):
 
 m.to_streamlit(height=700)
 
-if m.user_roi_bounds() is not None:
-    bbox = m.user_roi_bounds()
+
+
+
+bbox = m.user_roi_bounds()
+
+if not bbox:
+    st.text("Draw field")
+    tmp_button = st.button("Add value to database", key=f"missing_{e}")
+    if tmp_button:
+        bbox = m.user_roi_bounds()
+    else:
+        st.stop()
+    
 
 st.write(bbox)
