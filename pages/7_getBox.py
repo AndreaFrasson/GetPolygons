@@ -22,3 +22,7 @@ with st.expander("See source code"):
 
 m.to_streamlit(height=700)
 
+if m.user_roi_bounds() is not None:
+    bbox = m.user_roi_bounds()
+
+st.write(bbox)
