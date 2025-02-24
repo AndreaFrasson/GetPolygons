@@ -3,6 +3,9 @@ import leafmap.foliumap as leafmap
 
 st.set_page_config(layout="wide")
 
+if "data" not in st.session_state:
+    st.session_state["data"] = {'bbox': None}
+
 markdown = """
 A Streamlit map template
 <https://github.com/opengeos/streamlit-map-template>
@@ -21,11 +24,6 @@ with st.expander("See source code"):
         m.add_basemap("SATELLITE")
 
 m.to_streamlit(height=700)
-
-
-
-
-bbox = m.user_roi_bounds()
 
 if not bbox:
     st.text("Draw field")
